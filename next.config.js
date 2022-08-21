@@ -6,6 +6,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   assetPrefix: isProd ? '/vaultuis/' : '',
+  images: {
+    loader: 'akamai',
+    path: '',
+  },
 }
 
 module.exports = nextConfig
