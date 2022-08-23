@@ -19,11 +19,11 @@ export const THEME_SETTINGS: { [key in UserTheme]?: DefaultTheme } = {
         bgPositive: "#92FF9A",
         bgNegative: "#ff9292",
         base1: "#000000",
-        base2: "#FFFFFF",
-        base3: "#F4F4F4",
+        base2: "#0757F9",
+        base3: "#5814FB",
         inactive: "#9292AC",
         document: {
-            background: "#150236",
+            background: "#FFFFFF",
             accent: "#5D0071",
         },
         gradient: {
