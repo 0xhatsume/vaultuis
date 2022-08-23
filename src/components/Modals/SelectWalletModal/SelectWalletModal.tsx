@@ -7,11 +7,11 @@ import {
 import { useTranslation } from "next-i18next";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Frame, Overlay } from "~components";
-import { bscConnector, injected, walletconnect } from "~connectors";
-import { useActiveWeb3React } from "~hooks";
-import { hideModal, showNotification } from "~redux/application";
-import { setupNetwork } from "~utils";
+import { Frame, Overlay } from "../../../components";
+import { bscConnector, injected, walletconnect } from "../../../connectors";
+import { useActiveWeb3React } from "../../../hooks";
+import { hideModal, showNotification } from "../../../redux/application";
+import { setupNetwork } from "../../../utils";
 import {
     Option,
     OptionInner,

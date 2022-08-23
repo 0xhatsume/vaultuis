@@ -1,5 +1,5 @@
 import React from "react";
-import { useActiveModalList } from "~redux/application/hooks";
+import { useActiveModalList } from "../../redux/application/hooks";
 import { SelectWalletModal } from "./SelectWalletModal";
 import { WalletInfoModal } from "./WalletInfoModal";
 

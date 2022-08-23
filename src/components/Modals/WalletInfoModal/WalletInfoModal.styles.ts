@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ButtonPlain } from "~components/Buttons";
+import { ButtonPlain } from "../../../components/Buttons";
 
 export const Title = styled.h2`
     margin-bottom: 30px;

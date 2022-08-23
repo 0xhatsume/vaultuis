@@ -2,10 +2,10 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ButtonGhost, Frame, Overlay } from "~components";
-import { NETWORKS } from "~config/constants";
-import { useActiveWeb3React, useTimeout } from "~hooks";
-import { hideModal } from "~redux/application";
+import { ButtonGhost, Frame, Overlay } from "../../../components";
+import { NETWORKS } from "../../../config/constants";
+import { useActiveWeb3React, useTimeout } from "../../../hooks";
+import { hideModal } from "../../../redux/application";
 import {
     ActionsWrapper,
     AddressInfo,
