@@ -1,14 +1,25 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
+import { BasePage } from '../components/BasePage';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { i18n } from "../../i18next";
 
 const Home: NextPage = () => {
   return (
     <>
-      <main>
+      <BasePage>
         Henlo
-      </main>
+      </BasePage>
     </>
   )
 }
+
+export const getStaticProps = async({locale}) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common'], {
+      i18n
+    })),
+    
+  }
+})
 
 export default Home

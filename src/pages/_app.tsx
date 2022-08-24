@@ -8,6 +8,8 @@ import { ThemeProvider } from "../theme";
 import store from "../redux/store";
 import { Header, Modals, Notifications, Updaters } from "../components";
 import { StrictMode } from "react";
+import { appWithTranslation } from "next-i18next";
+import { i18n } from "../../i18next";
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NETWORK_CONTEXT_NAME);
 
@@ -41,4 +43,5 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+//export default MyApp
+export default appWithTranslation(MyApp, { i18n });

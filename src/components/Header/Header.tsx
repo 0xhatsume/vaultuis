@@ -59,12 +59,9 @@ export const Header = () => {
                 {!active ? (
                     <Link href="/" passHref>
                         <CTALink onClick={handleClickConnectWallet}>
-                            {/* <CTA
-                                height={34}
-                            >{t`navigation.connect-wallet`}</CTA> */}
                             <CTA
                                 height={34}
-                            >Connect Wallet</CTA>
+                            >{t`navigation.connect-wallet`}</CTA>
                         </CTALink>
                     </Link>
                 ) : (
