@@ -4,7 +4,6 @@ import {
     UserRejectedRequestError as UserRejectedRequestErrorWalletConnect,
     WalletConnectConnector,
 } from "@web3-react/walletconnect-connector";
-import { useTranslation } from "next-i18next";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Frame, Overlay } from "../../../components";
@@ -22,7 +21,6 @@ import {
 export const SelectWalletModal = () => {
     const dispatch = useDispatch();
     const { activate, deactivate, error } = useActiveWeb3React();
-    const { t } = useTranslation("common");
     const handleHideModal = () => dispatch(hideModal("SelectWalletModal"));
 
     useEffect(() => {
@@ -60,7 +58,7 @@ export const SelectWalletModal = () => {
             dispatch(
                 showNotification({
                     type: "positive",
-                    content: `${wallet} ${t`wallet.wallet`} ${t`wallet.connected`}`,
+                    content: `${wallet} ${`Wallet`} ${`connected`}`,
                 }),
             );
         }
@@ -83,53 +81,53 @@ export const SelectWalletModal = () => {
     return (
         <Overlay onClickOutside={handleHideModal}>
             <Frame width="428px" padding="30px" onClose={handleHideModal}>
-                <Title>{t`wallet.select-a-wallet`}</Title>
+                <Title>{`Select a Wallet`}</Title>
                 <OptionList>
                     <Option onClick={() => handleConnectWallet(injected)}>
                         <OptionInner icon="/img/ui/logos/metamask.svg">
-                            {t`wallet.metamask`}
+                            {`Metamask`}
                         </OptionInner>
                     </Option>
                     <Option
                         onClick={() =>
                             handleConnectWallet(
                                 walletconnect,
-                                t`wallet.walletconnect`,
+                                `WalletConnect`,
                                 walletConnectErrorHandler,
                             )
                         }
                     >
                         <OptionInner icon="/img/ui/logos/walletconnect.svg">
-                            {t`wallet.walletconnect`}
+                            {`WalletConnect`}
                         </OptionInner>
                     </Option>
                     <Option onClick={() => handleConnectWallet(injected)}>
                         <OptionInner icon="/img/ui/logos/trust-wallet.svg">
-                            {t`wallet.trust-wallet`}
+                            {`Trust Wallet`}
                         </OptionInner>
                     </Option>
                     <Option onClick={() => handleConnectWallet(injected)}>
                         <OptionInner icon="/img/ui/logos/math-wallet.svg">
-                            {t`wallet.math-wallet`}
+                            {`Math Wallet`}
                         </OptionInner>
                     </Option>
                     <Option onClick={() => handleConnectWallet(injected)}>
                         <OptionInner icon="/img/ui/logos/tokenpocket.svg">
-                            {t`wallet.tokenpocket`}
+                            {`TokenPocket`}
                         </OptionInner>
                     </Option>
                     <Option
                         onClick={() =>
-                            handleConnectWallet(bscConnector, t`binance-chain`)
+                            handleConnectWallet(bscConnector, `Binance Chain`)
                         }
                     >
                         <OptionInner icon="/img/ui/logos/binance-chain.svg">
-                            {t`wallet.binance-chain`}
+                            {`Binance Chain`}
                         </OptionInner>
                     </Option>
                     <Option onClick={() => handleConnectWallet(injected)}>
                         <OptionInner icon="/img/ui/logos/safepal.svg">
-                            {t`wallet.safepal-wallet`}
+                            {`SafePal Wallet`}
                         </OptionInner>
                     </Option>
                 </OptionList>

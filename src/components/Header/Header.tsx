@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useCallback, useState } from "react";
@@ -21,7 +20,7 @@ import { Wallet } from "./Wallet";
 
 export const Header = () => {
     useEagerConnect();
-    const { t } = useTranslation("common");
+    
     const router = useRouter();
     const dispatch = useDispatch();
     const { active } = useActiveWeb3React();
@@ -61,7 +60,7 @@ export const Header = () => {
                         <CTALink onClick={handleClickConnectWallet}>
                             <CTA
                                 height={34}
-                            >{t`navigation.connect-wallet`}</CTA>
+                            >{`Connect Wallet`}</CTA>
                         </CTALink>
                     </Link>
                 ) : (

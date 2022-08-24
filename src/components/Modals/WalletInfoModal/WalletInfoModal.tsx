@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -20,7 +19,6 @@ export const WalletInfoModal = () => {
     const dispatch = useDispatch();
     const { account, chainId, deactivate } = useActiveWeb3React();
     const router = useRouter();
-    const { t } = useTranslation("common");
     const [copied, toggleCopied] = useState(false);
 
     useTimeout(() => toggleCopied(false), copied ? 3000 : null);
@@ -51,9 +49,9 @@ export const WalletInfoModal = () => {
     return (
         <Overlay onClickOutside={handleHideModal}>
             <Frame width="428px" padding="30px" onClose={handleHideModal}>
-                <Title>{t`wallet.my-wallet`}</Title>
+                <Title>{`My Wallet`}</Title>
                 <AddressInfo>
-                    <AddressInfoTitle>{t`wallet.connected`}</AddressInfoTitle>
+                    <AddressInfoTitle>{`Wallet Connected`}</AddressInfoTitle>
                     {account}
                 </AddressInfo>
                 <ActionsWrapper>
@@ -63,21 +61,21 @@ export const WalletInfoModal = () => {
                         rel="noopener noreferrer"
                     >
                         <PlainButton>
-                            {t`wallet.view-on-explorer`}
+                            {`View On Explorer`}
                             <IconNewWindow />
                         </PlainButton>
                     </a>
                     <PlainButton onClick={handleCopyAddress}>
                         {!copied
-                            ? t`wallet.copy-address`
-                            : t`wallet.copied-address`}
+                            ? `Copy Address`
+                            : `Copied!`}
                         <IconCopy />
                     </PlainButton>
                 </ActionsWrapper>
                 <ButtonGhost
                     height={56}
                     onClick={handleLogout}
-                >{t`navigation.logout`}</ButtonGhost>
+                >{`Logout`}</ButtonGhost>
             </Frame>
         </Overlay>
     );
