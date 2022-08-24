@@ -12,11 +12,13 @@ export const StyledHeader = styled.header<{ sticky?: boolean }>`
     z-index: 10;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 24px ${CONTENT_WIDTH_GUTTER}px;
+    padding-right: 50px;
     background-color: ${({ theme }) => theme.document.background}00;
     border-bottom: solid 1px ${({ theme }) => theme.base2}66;
     transition: padding 0.3s ease-out, background-color 0.3s ease-out,
@@ -25,9 +27,9 @@ export const StyledHeader = styled.header<{ sticky?: boolean }>`
     ${({ sticky, theme }) =>
         sticky &&
         `
-          padding: 20px ${CONTENT_WIDTH_GUTTER}px;
-          background-color: ${theme.document.background};
-      `}
+        padding: 20px ${CONTENT_WIDTH_GUTTER}px;
+        background-color: ${theme.document.background};
+    `}
 
     @media (max-width: ${BREAKPOINTS[Breakpoint.LG]}px) {
         padding: ${({ sticky }) =>
@@ -56,6 +58,7 @@ export const Navigation = styled.nav<{ active?: boolean }>`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin-right: 50px;
     gap: 50px;
 
     @media (max-width: ${BREAKPOINTS[Breakpoint.XL]}px) {

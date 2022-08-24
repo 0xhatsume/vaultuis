@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   html, body {
     width: 100%;
+    margin: 0;
     font-family: 'Noto Sans', sans-serif;
     background: ${({ theme }) => theme.document.background};
   }

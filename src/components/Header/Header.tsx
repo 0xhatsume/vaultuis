@@ -52,7 +52,14 @@ export const Header = () => {
 
     return (
         <StyledHeader sticky={isStickyHeader}>
-            
+            <Link href="/" passHref>
+                <LogoLink
+                    active={activeNavicon}
+                    onClick={() => setActiveNavicon(false)}
+                >
+                    Logo Placeholder
+                </LogoLink>
+            </Link>
             <Navigation active={activeNavicon}>
                 
                 {!active ? (
@@ -67,7 +74,12 @@ export const Header = () => {
                     <Wallet />
                 )}
             </Navigation>
-            
+            <Navicon
+                active={activeNavicon}
+                onClick={() => setActiveNavicon(!activeNavicon)}
+            >
+                <div />
+            </Navicon>
         </StyledHeader>
     );
 };
