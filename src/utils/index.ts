@@ -1,4 +1,4 @@
-// export * from "./bigNumber";
+export * from "./bigNumber";
 // export * from "./calculateGasMargin";
 // export * from "./calculateSlippageAmount";
 export * from "./chunkArray";
@@ -21,5 +21,5 @@ export * from "./isAddress";
 // export * from "./resolveENSContentHash";
 export * from "./retry";
 export * from "./setupNetwork";
-// export * from "./shortenAddress";
+export * from "./shortenAddress";
 // export * from "./uriToHttp";

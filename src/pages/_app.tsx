@@ -6,6 +6,7 @@ import { NETWORK_CONTEXT_NAME } from '../config/constants';
 import { getLibrary } from "../utils/getLibrary";
 import { ThemeProvider } from "../theme";
 import store from "../redux/store";
+import { Header, Modals, Notifications, Updaters } from "../components";
 import { StrictMode } from "react";
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NETWORK_CONTEXT_NAME);
@@ -27,7 +28,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Web3ProviderNetwork getLibrary={getLibrary}>
         <Provider store={store}>
           <ThemeProvider>
+            <Header/>
             <Component {...pageProps} />
+            <Modals/>
+            <Notifications/>
+            <Updaters/>
           </ThemeProvider>
         </Provider>
       </Web3ProviderNetwork>
