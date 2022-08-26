@@ -20,7 +20,7 @@ import {
 
 export const SelectWalletModal = () => {
     const dispatch = useDispatch();
-    const { activate, deactivate, error } = useActiveWeb3React();
+    const { active, activate, deactivate, error, account } = useActiveWeb3React();
     const handleHideModal = () => dispatch(hideModal("SelectWalletModal"));
 
     useEffect(() => {
@@ -40,6 +40,17 @@ export const SelectWalletModal = () => {
         wallet = "",
         errorHandler?: (e: Error) => void,
     ) => {
+        // handle case where already connected
+        if(account){
+            handleHideModal();
+            dispatch(
+                showNotification({
+                    type: "positive",
+                    content: `${`Wallet`} ${`already connected`}`,
+                }),
+            );
+        }
+
         let error: Error;
         try {
             await setupNetwork();
@@ -62,6 +73,7 @@ export const SelectWalletModal = () => {
                 }),
             );
         }
+        
     };
 
     const walletConnectErrorHandler = (error: Error) => {
@@ -69,6 +81,7 @@ export const SelectWalletModal = () => {
             walletconnect.walletConnectProvider = null;
             walletconnect.close();
             deactivate();
+            handleHideModal();
             dispatch(
                 showNotification({
                     type: "negative",

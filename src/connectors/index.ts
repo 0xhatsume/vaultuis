@@ -2,6 +2,7 @@ import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { BscConnector } from "@binance-chain/bsc-connector";
 import { RPC } from "../config/constants";
+import { NetworkConnector } from "./NetworkConnector";
 
 const DEFAULT_CHAIN_ID = parseInt(process.env.DEFAULT_CHAIN_ID??"1");
 const SUPPORTED_CHAIN_IDS = process.env.SUPPORTED_CHAIN_IDS??"1".split(",").map(
@@ -24,5 +25,10 @@ export const walletconnect = new WalletConnectConnector({
 export const bscConnector = new BscConnector({
     supportedChainIds: [DEFAULT_CHAIN_ID === 97 ? 97 : 56],
 });
+
+export const network = new NetworkConnector({
+    urls: RPC,
+    defaultChainId: 1,
+})
 
 export * from "./NetworkConnector";

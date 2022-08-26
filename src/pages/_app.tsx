@@ -9,8 +9,9 @@ import store from "../redux/store";
 import { Header, Modals, Notifications, Updaters } from "../components";
 import { StrictMode } from "react";
 
+// const Web3ProviderNetwork = typeof window !== "undefined" && createWeb3ReactRoot(
+//                                                               NETWORK_CONTEXT_NAME);
 const Web3ProviderNetwork = createWeb3ReactRoot(NETWORK_CONTEXT_NAME);
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <StrictMode>

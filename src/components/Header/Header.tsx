@@ -1,8 +1,13 @@
+import { useWeb3React } from "@web3-react/core";
+import { NETWORK_CONTEXT_NAME } from '../../config/constants';
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useActiveWeb3React, useEagerConnect, useScroll } from "../../hooks";
+import { useActiveWeb3React, 
+            useEagerConnect, useInactiveListener, 
+        useScroll } from "../../hooks";
+import { network } from "../../connectors";
 import { setStickyHeader, showModal } from "../../redux/application";
 import { useIsStickyHeader } from "../../redux/application/hooks";
 import {
@@ -19,13 +24,26 @@ import {
 import { Wallet } from "./Wallet";
 
 export const Header = () => {
-    useEagerConnect();
     
     const router = useRouter();
     const dispatch = useDispatch();
-    const { active } = useActiveWeb3React();
+
+    const { active, account } = useWeb3React();
+    const { active: networkActive, error: networkError, 
+            activate: activateNetwork, account: activeAccount } = useWeb3React(NETWORK_CONTEXT_NAME);
     const [activeNavicon, setActiveNavicon] = useState(false);
     const isStickyHeader = useIsStickyHeader();
+
+    const triedEager = useEagerConnect();
+    // after eagerly trying injected, if the network connect ever isn't active or in an error state, activate itd
+    useEffect(() => {
+        if (triedEager && !networkActive && !networkError && !active) {
+        activateNetwork(network)
+        }
+    }, [triedEager, networkActive, networkError, activateNetwork, active])
+
+    // when there's no account connected, react to logins (broadly speaking) on the injected provider, if it exists
+    useInactiveListener(!triedEager)
 
     const isActive = (route: string) => {
         if (route !== "/") return router.pathname.startsWith(route);
@@ -50,6 +68,12 @@ export const Header = () => {
         dispatch(showModal("SelectWalletModal"));
     };
 
+    // useEffect(() => {
+    //     if(account){
+    //         const wallet
+    //     }
+    // }, [active, account])
+    const { account: dominantAccount } = useActiveWeb3React();
     return (
         <StyledHeader sticky={isStickyHeader}>
             <Link href="/" passHref>
@@ -62,7 +86,7 @@ export const Header = () => {
             </Link>
             <Navigation active={activeNavicon}>
                 
-                {!active ? (
+                {!dominantAccount ? (
                     <Link href="/" passHref>
                         <CTALink onClick={handleClickConnectWallet}>
                             <CTA
